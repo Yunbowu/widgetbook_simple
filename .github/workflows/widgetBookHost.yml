@@ -1,4 +1,4 @@
-name: Widgetbook Cloud Hosting
+name: flutter web Hosting
 on: push
 
 jobs:
@@ -34,7 +34,10 @@ jobs:
 #      - name: Push Widgetbook Build
 #        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
 
-      - name: Deploy to GitHub Pages 🚀
-        uses: lastoyster/github-pages-deploy-action@v4
+      # 部署到 GitHub Pages 的 /my_widgetbook 路径
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: build/web
+          branch: gh-pages # 部署到 gh-pages 分支
+          folder: build/web # 构建文件存放的位置
+          target-dir: widgetBookDemo # 部署 路径
