@@ -28,8 +28,13 @@ jobs:
             dart run build_runner build -d
             flutter build web
 
-      - name: Install Widgetbook CLI
-        run: dart pub global activate widgetbook_cli
+#      - name: Install Widgetbook CLI
+#        run: dart pub global activate widgetbook_cli
 
-      - name: Push Widgetbook Build
-        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
+#      - name: Push Widgetbook Build
+#        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: lastoyster/github-pages-deploy-action@v4
+        with:
+          folder: build/web
