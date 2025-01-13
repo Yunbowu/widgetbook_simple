@@ -18,14 +18,12 @@ jobs:
       - name: Bootstrap App
         run: |
             flutter pub get
-            # Add any other steps needed to make your
-            # app widgets available for Widgetbook
+
 
       - name: Build web
         run: |
             flutter pub get
-            dart run build_runner build -d
-            flutter build web
+            flutter build web --release
 
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
