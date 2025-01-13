@@ -23,7 +23,7 @@ jobs:
       - name: Build web
         run: |
             flutter pub get
-            flutter build web --release
+            flutter build web --release --base-href="/widgetbook_simple/"
 
 #      # 部署到 GitHub Pages
 #      - name: Deploy to GitHub Pages
