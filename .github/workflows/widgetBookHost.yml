@@ -10,8 +10,7 @@ jobs:
 
       - name: Setup flutter
         uses: subosito/flutter-action@v2
-#        with:
-#            channel: stable
+
         with:
           flutter-version: '3.7.10'
 
@@ -22,22 +21,17 @@ jobs:
             # Add any other steps needed to make your
             # app widgets available for Widgetbook
 
-      - name: Build Widgetbook
+      - name: Build web
         run: |
             flutter pub get
             dart run build_runner build -d
             flutter build web
 
-#      - name: Install Widgetbook CLI
-#        run: dart pub global activate widgetbook_cli
-
-#      - name: Push Widgetbook Build
-#        run: widgetbook cloud build push --api-key ${{ secrets.WIDGETBOOK_API_KEY }}
-
-      # 部署到 GitHub Pages 的 /my_widgetbook 路径
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages # 部署到 gh-pages 分支
           folder: build/web # 构建文件存放的位置
           target-dir: widgetBookDemo # 部署 路径
+          token: ${{ secrets.GH_TOKEN }}  # 使用自定义的 PAT
