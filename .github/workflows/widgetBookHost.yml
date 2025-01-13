@@ -25,10 +25,21 @@ jobs:
             flutter pub get
             flutter build web --release
 
-      # 部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+#      # 部署到 GitHub Pages
+#      - name: Deploy to GitHub Pages
+#        uses: JamesIves/github-pages-deploy-action@v4
+#        with:
+#          branch: gh-pages # 部署到 gh-pages 分支
+#          folder: build/web # 构建文件存放的位置
+#          token: ${{ secrets.GH_TOKEN }}  # 使用自定义的 PAT
+
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages # 部署到 gh-pages 分支
-          folder: build/web # 构建文件存放的位置
-          token: ${{ secrets.GH_TOKEN }}  # 使用自定义的 PAT
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          force_orphan: true
+          user_name: 'Yunbowu'
+          user_email: 'yuboow@163.com'
+          commit_message: 'Publish to gh-pages'
