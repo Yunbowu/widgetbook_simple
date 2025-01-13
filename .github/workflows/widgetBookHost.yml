@@ -22,8 +22,11 @@ jobs:
 
       - name: Build web
         run: |
+            # 获取当前仓库名称
+            REPO_NAME=${GITHUB_REPOSITORY##*/}
             flutter pub get
-            flutter build web --release --base-href="/widgetbook_simple/"
+#            flutter build web --release --base-href="/widgetbook_simple/"
+            flutter build web --release --base-href="/$REPO_NAME/"
 
       # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
@@ -34,7 +37,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}  # 使用自定义的 PAT
 
 
-#方法2
+#gh page 部署方法2
 
 #      - name: Deploy
 #        uses: peaceiris/actions-gh-pages@v3
