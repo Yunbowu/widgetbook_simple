@@ -10,8 +10,11 @@ jobs:
 
       - name: Setup flutter
         uses: subosito/flutter-action@v2
+#        with:
+#            channel: stable
         with:
-            channel: stable
+          flutter-version: '3.7.10'
+
 
       - name: Bootstrap App
         run: |
